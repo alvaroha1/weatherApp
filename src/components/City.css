@@ -12,6 +12,7 @@
   text-align:center;
   transition: all 0.2s;
   font-size: 1em;
+  font-weight: bold;
 }
 
 .City:hover{

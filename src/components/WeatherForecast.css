@@ -1,0 +1,24 @@
+.wFContainer {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center;
+  align-items: center; */
+}
+
+.a {
+  /* background-color: yellow; */
+  width: 100vh;
+  height: 10vh;
+}
+
+.b {
+  background-color: yellowgreen;
+  width: 100vh;
+  height: 50vh;
+}
+
+.c {
+  /* background-color: orange; */
+  width: 100vh;
+  height: 10vh;
+}
