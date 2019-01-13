@@ -13,12 +13,14 @@ class App extends Component {
       currentSelectionWeather: null,
       currentCity: 'Amsterdam',
       currentForecasts: null,
+      averageTemp: null,
     }
   }
 
   updateCityIdState = ( cityId ) => {
     this.setState( { cityId: cityId } );
     this.fetchWeather();
+    this.tempAnalysis();
   }
 
   fetchWeather = () => {
@@ -38,6 +40,27 @@ class App extends Component {
 
   logState = () => {
     console.log(this.state);
+    this.tempAnalysis();
+  }
+
+  tempAnalysis = () => {
+    const allTemps = [];
+    for (const forecast of this.state.currentForecasts) {
+      allTemps.push(forecast.main.temp);;
+    }
+    console.log(allTemps);
+    const avgTemp = allTemps.reduce((total, amount, index, array) => {
+      total += amount;
+      if ( index === array.length - 1) {
+        return total/array.length;
+      } else {
+        return total;
+      }
+    });
+    console.log(avgTemp);  
+    const avgTempCels = (avgTemp - 273.15).toFixed(2);
+    console.log(avgTempCels);
+    this.setState({averageTemp: avgTempCels});
   }
 
   componentWillMount() {
@@ -57,9 +80,10 @@ class App extends Component {
           <button onClick={this.logState}>Test current state</button>
         </div>
         <header className="App-header">
-          <WeatherForecast name={this.state.currentCity}/>
+          <WeatherForecast 
+            name={this.state.currentCity}
+            avgTemp={this.state.averageTemp}/>
         </header>
-        {/* {setInterval(() => console.log('10segons'), 10000)} */}
       </div>
     );
   }

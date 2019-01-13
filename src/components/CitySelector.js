@@ -18,6 +18,10 @@ class CitySelector extends Component {
           id: '5601538',
           name: 'Moscow',
         },
+        {
+          id: '6356055',
+          name: 'Barcelona',
+        },
       ]
     }
  }
